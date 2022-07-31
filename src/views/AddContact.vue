@@ -34,6 +34,9 @@
           </div>
         </form>
       </div>
+      <div class="col-md-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6rbCgaHI6TkSkS2Jzfggu2Z7FHcXBQJU2fEQmW7aSbJN_RTMR84Uf_wAAGKIiHRzU5Mc&usqp=CAU" alt="" class="contact-img">
+      </div>
     </div>
   </div>
 </template>
