@@ -1,0 +1,42 @@
+{
+    "contacts": [
+        {
+            "id":"DNR",
+            "name": "Esteban Choque",
+            "email": "esteban@gmail.com",
+            "mobile": "25632587411",
+            "photo": "",
+            "groupId": "2"
+        },
+        {
+            "id":"DNR",
+            "name": "Esteban Choque",
+            "email": "esteban@gmail.com",
+            "mobile": "25632587411",
+            "photo": "",
+            "groupId": "1"
+        },
+        {
+            "id":"DNR",
+            "name": "Esteban Choque",
+            "email": "esteban@gmail.com",
+            "mobile": "25632587411",
+            "photo": "",
+            "groupId": "3"
+        }
+    ],
+    "groups": [
+        {
+            "id": "1",
+            "name": "Colleague"
+        },
+        {
+            "id": "2",
+            "name": "Family"
+        },
+        {
+            "id": "3",
+            "name": "Friend"
+        }
+    ]
+}
