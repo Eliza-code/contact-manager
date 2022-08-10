@@ -23,20 +23,40 @@
             </div>
         </div>
     </div>
-    <div class="container mt-3">
+    <!--   Spiner    -->
+    <div v-if="loading">
+      <div class="container">
         <div class="row">
-            <div class="col-md-6">
+          <div class="col">
+            <SpinnerComp />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Error -->
+    <div v-if="!loading && errorMessage">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="h3 text-danger fw-bold">{{errorMessage}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-3" v-if="contacts.length > 0">
+        <div class="row">
+            <div class="col-md-6" v-for="contact of contacts" :key="contact">
                 <div class="card my-2 list-group-item-success shadow-lg">
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-sm-4">
-                                <img src="https://e7.pngegg.com/pngimages/889/832/png-clipart-google-contacts-mobile-app-contact-manager-app-store-android-application-package-email-miscellaneous-blue.png" alt="" class="contact-img">
+                                <img :src="contact.photo" alt="" class="contact-img">
                             </div>
                             <div class="col-sm-7">
                                 <ul class="list-group">
-                                    <li class="list-group-item">Name: <span class="fw-bold">Name</span></li>
-                                    <li class="list-group-item">Email: <span class="fw-bold">Email</span> </li>
-                                    <li class="list-group-item">Mobile: <span class="fw-bold">Mobile</span> </li>
+                                    <li class="list-group-item">Name: <span class="fw-bold">{{contact.name}}</span></li>
+                                    <li class="list-group-item">Email: <span class="fw-bold">{{contact.email}}</span> </li>
+                                    <li class="list-group-item">Mobile: <span class="fw-bold">{{contact.mobile}}</span> </li>
                                 </ul>
                             </div>
                             <div class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
@@ -58,9 +78,35 @@
     </div>
 </template>
 <script>
+import { ContactService } from "@/services/ContactService"
+import SpinnerComp from "@/components/SpinnerComp.vue"
+
 
 export default ({
   name: 'ContactManager',
+  componets: {SpinnerComp},
+  data: function (){
+    return {
+      loading: false,
+      contacts: [],
+      errorMessage: null
+    }
+  },
+  created : async function (){
+    try{
+      this.loading = true
+      let response = await ContactService.getAllContact()
+      this.contacts = response.data
+      this.loading = false
+    }
+    catch (error){
+      this.errorMessage = error
+      this.loader = false
+    }
+  },
+  methods: {
+    
+  }
 })
 </script>
 
